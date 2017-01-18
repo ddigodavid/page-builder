@@ -2,9 +2,9 @@
     <div class="panel panel-default">
         <div class="panel panel-heading">Templates</div>
         <div class="panel-body">
-            <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+            <ul id="template-list" class="gallery ui-helper-reset ui-helper-clearfix">
 
-                <li class="ui-widget-content ui-corner-tr">
+                <li class="ui-widget-content ui-corner-tr" v-draggable>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Layout 1</h3>

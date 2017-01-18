@@ -19,6 +19,10 @@ Vue.component('pageContent', require('./components/PageContent.vue'));
 Vue.component('templateOption', require('./components/TemplateOption.vue'));
 Vue.component('templateList', require('./components/TemplateList.vue'));
 
+import Draggable from './directives/Draggable';
+
+Vue.directive('draggable', Draggable);
+
 const app = new Vue({
     el: '#app'
 });
