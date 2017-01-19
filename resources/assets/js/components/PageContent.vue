@@ -3,50 +3,45 @@
         <div class="panel panel-default">
             <div class="panel-heading">Conteúdo</div>
             <div class="panel-body">
-                <div id="content"></div>
+                <div id="content" v-droppable="{accept: '#template-list > li', drop: onDrop}">
+                    <template v-for="tpl in templates">
+                        <template-row :template="tpl"></template-row>
+                    </template>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<script type="text/javascript">
     export default {
         data() {
             return {
-                'container': {}
+                container: {},
+                templates: []
             }
         },
         mounted() {
-
-            let self = this;
             this.container = $(this.$el).find('#content');
-
-            this.container.droppable({
-                accept: "#template-list > li",
-
-                drop: function(event, ui) {
-                    self.onTemplateIsDropped(ui.draggable);
-                }
-            });
-
         },
 
         methods: {
 
-            onTemplateIsDropped(template) {
+            onDrop(draggable) {
 
-                let self = this;
+                let template = draggable.data('template');
 
-                template.fadeOut(function() {
-                    var $list = $("ul", self.container).length ?
-                            $("ul", self.container) :
-                            $("<ul class='gallery ui-helper-reset'/>").appendTo(self.container);
+                this.addTemplate(template);
 
-                    template.appendTo($list).fadeIn(function() {
-                        
-                    });
-                });
+            },
 
+            addTemplate(template)
+            {
+                this.templates.push(template);
+            },
+
+            getHtml() {
+                return this.container.html();
             }
 
         }

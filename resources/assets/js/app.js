@@ -16,12 +16,14 @@ require('./bootstrap');
 Vue.component('navbar', require('./components/Navbar.vue'));
 Vue.component('pageBuilder', require('./components/PageBuilder.vue'));
 Vue.component('pageContent', require('./components/PageContent.vue'));
-Vue.component('templateOption', require('./components/TemplateOption.vue'));
+Vue.component('templateRow', require('./components/TemplateRow.vue'));
 Vue.component('templateList', require('./components/TemplateList.vue'));
 
 import Draggable from './directives/Draggable';
+import Droppable from './directives/Droppable';
 
 Vue.directive('draggable', Draggable);
+Vue.directive('droppable', Droppable);
 
 const app = new Vue({
     el: '#app'
