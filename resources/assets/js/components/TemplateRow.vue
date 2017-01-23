@@ -1,28 +1,11 @@
-
-
 <script type="text/javascript">
-
-    let res = Vue.compile('<div>Teste</div>');
-
     export default {
         props: ['template'],
 
-        data() {
-            return {
-                teste: null
-            };
-        },
-
-        computed: {
-            templateHtml() {
-                return this.template.html;
-            }
-        },
-
         created() {
-            //this.teste = Vue.compile(this.templateHtml);
-        },
-
-        render: res.render
+            let res = Vue.compile(`<div class="row">${this.template.html}</div>`);
+            this.$options.render = res.render;
+            this.$options.staticRenderFns = res.staticRenderFns;
+        }
     }
 </script>

@@ -31,13 +31,13 @@
                     {
                         name: 'Template 1',
                         html: `
-                        <div><h1 contenteditable="true">Título template 1</h1><p contenteditable="true">Lorem ipsum dolor sit amet ...</p><button class="btn btn-default" v-draggable>Teste</button></div>
+                        <div><h1 contenteditable="true">Título template 1</h1><p contenteditable="true">Lorem ipsum dolor sit amet ...</p><div class="btn btn-default" v-draggable>Teste</div></div>
                         `
                     },
                     {
                         name: 'Template 2',
                         html: `
-                        <div><h1>Título template 2</h1><p>Lorem ipsum dolor sit amet ...</p></div>
+                        <div><h1 contenteditable="true">Título template 2</h1><p contenteditable="true">Lorem ipsum dolor sit amet ...</p></div>
                         `
                     },
                 ],
@@ -45,16 +45,6 @@
                     name: 'testando'
                 }
             }
-        },
-
-        created() {
-
-
-
-        },
-
-        mounted() {
-
         }
     }
 </script>
