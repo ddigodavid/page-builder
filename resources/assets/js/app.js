@@ -21,9 +21,13 @@ Vue.component('templateList', require('./components/TemplateList.vue'));
 
 import Draggable from './directives/Draggable';
 import Droppable from './directives/Droppable';
+import ContentEditable from './directives/ContentEditable';
+import BackgroundChangeable from './directives/BackgroundChangeable';
 
 Vue.directive('draggable', Draggable);
 Vue.directive('droppable', Droppable);
+Vue.directive('content-editable', ContentEditable);
+Vue.directive('background-changeable', BackgroundChangeable);
 
 const app = new Vue({
     el: '#app'

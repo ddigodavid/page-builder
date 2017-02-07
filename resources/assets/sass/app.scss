@@ -17,3 +17,15 @@ body {
   min-height: 768px;
   padding: 1%;
 }
+
+.template-row {
+  position: relative;
+  border: 1px dashed #ccc;
+  padding: 20px 0 0 0;
+}
+
+.teste-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

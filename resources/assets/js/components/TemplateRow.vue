@@ -3,7 +3,7 @@
         props: ['template'],
 
         created() {
-            let res = Vue.compile(`<div class="row">${this.template.html}</div>`);
+            let res = Vue.compile(`<div class="row template-row">${this.template.html}</div>`);
             this.$options.render = res.render;
             this.$options.staticRenderFns = res.staticRenderFns;
         }
