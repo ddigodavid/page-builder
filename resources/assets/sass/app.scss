@@ -1,0 +1,31 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+body {
+  padding-top: 70px;
+}
+
+#content {
+  width: 100%;
+  min-height: 768px;
+  padding: 1%;
+}
+
+.template-row {
+  position: relative;
+  border: 1px dashed #ccc;
+  padding: 20px 0 0 0;
+}
+
+.teste-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
