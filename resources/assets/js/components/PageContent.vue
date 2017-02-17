@@ -3,22 +3,16 @@
         <div class="panel panel-default">
             <div class="panel-heading">Conteúdo</div>
             <div class="panel-body">
-                <div id="content" v-droppable="{accept: '#template-list > li', drop: onDrop}">
-                    <!--<template v-for="(tpl, index) in templates">-->
-                        <!--<button class="btn btn-danger"-->
-                                <!--style="position:relative;z-index:1000;top:36px;left:-15px;"-->
-                                <!--@click.prevent="removeTemplate(index)">-->
-                            <!--<i class="glyphicon glyphicon-trash"></i> Remover-->
-                        <!--</button>-->
-                        <!--<template-row :template="tpl"></template-row>-->
-                    <!--</template>-->
-                </div>
+                <div id="content" v-droppable="{accept: '#template-list > li', drop: onDrop}" v-sortable></div>
             </div>
         </div>
     </div>
 </template>
 
 <script type="text/javascript">
+
+    const eventBus = new Vue({});
+
     export default {
         data() {
             return {
@@ -28,6 +22,13 @@
         },
         mounted() {
             this.container = $(this.$el).find('#content');
+
+            eventBus.$on('deleted', function(instance) {
+
+                $(instance.$el).parent().remove();
+
+            });
+
         },
 
         methods: {
@@ -39,24 +40,22 @@
                 // this.addTemplate(template);
 
                 let tpl = Vue.extend({
-                    template: template.html,
+                    template: `<div><button class="btn btn-danger" style="position:relative;z-index:1000;top:36px;left:-15px;"@click.prevent="removeTemplate">
+                                <i class="glyphicon glyphicon-trash"></i> Remover
+                            </button>${template.html}</div>`,
                     methods: {
                         removeTemplate() {
-                            alert('oi');
+                            eventBus.$emit('deleted', this);
                         }
                     }
                 });
 
                 let wrapper = $(`<div class="row template-row">
-                                    <button class="btn btn-danger"
-                                            style="position:relative;z-index:1000;top:36px;left:-15px;"
-                                            @click.prevent="removeTemplate">
-                                        <i class="glyphicon glyphicon-trash"></i> Remover
-                                    </button>
                                     <div id="template"></div>
                                 </div>`);
                 wrapper.appendTo('#content');
-                new tpl().$mount('#template');
+
+                new tpl({parent: this}).$mount('#template');
 
             },
 
@@ -67,10 +66,6 @@
 
             getHtml() {
                 return this.container.html();
-            },
-
-            removeTemplate(index) {
-                alert('sqn');
             }
 
         }

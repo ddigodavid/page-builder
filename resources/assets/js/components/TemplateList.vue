@@ -32,7 +32,7 @@
                         name: 'Template 1',
                         thumb: '/images/temp1.jpg',
                         html: `
-                        <section class="page_template1" v-background-changeable style="background:url(/especiais/page-module/images/img-template1.jpg) no-repeat; height: 480px; width:100%; background-position: center;">
+                        <section class="page_template1" v-background-changeable style="position: relative;background:url(/especiais/page-module/images/img-template1.jpg) no-repeat; height: 480px; width:100%; background-position: center;">
 
                           <div class="center-height" style="height: 480px;">
                           <div class="grid-module">
