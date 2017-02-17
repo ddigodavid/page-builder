@@ -50,7 +50,7 @@
                         html: `
                         <section class="page_template2">
                         <div class="grid-module">
-                          <img src="/especiais/page-module/images/img-template2.jpg" alt="">
+                          <div><img v-image-changeable src="/especiais/page-module/images/img-template2.jpg" alt=""></div>
                           <h1 v-content-editable>Título sobre o tema</h1>
                           <p v-content-editable>Muito importante citar na introdução que, atualmente, uma espécie de intercambio vem acontecendo entre os dois mundos, já que movimentos como o que aconteceu em Portugal, por exemplo, acabaram “aprendendo” a fazer vinhos com algumas técnicas e estilo do Novo Mundo. E que também o Novo mundo vem cada vez mais se aperfeiçoando e chegando próximo de vinhos de grande porte internacional, graças a influência de técnicas tradicionais do Velho Mundo. Ou seja, os estilos e as denominações são característica, mas aqui também, como no Especial da Uvas, é importante ressaltar que “tudo é possível” pois a diversidade é grande. Um caso interessante para ilustrar a possibilidade de diferentes resultados e até mesmo críticas é o do Chateau Pavie, que causou polêmica ao rebecer elogios de Parker e críticas negativas de Jancis Robinsosn:
                           </p>
@@ -65,18 +65,18 @@
                         <section class="page_template3">
                             <div class="grid-module930">
                             <ul class="cols-template3">
-                              <li>
-                                <img src="/especiais/page-module/images/img-thumb.jpg" alt="">
+                              <li style="position: relative;">
+                                <img v-image-changeable src="/especiais/page-module/images/img-thumb.jpg" alt="">
                                 <h3 v-content-editable>Título sobre o tema</h3>
                                 <p v-content-editable>Muito importante citar na introdução que, atualmente, uma espécie de intercambio vem acontecendo entre os dois mundos, já que movimentos como o que aconteceu em Portugal, por exemplo, acabaram “aprendendo” a fazer vinhos com algumas técnicas e estilo do Novo Mundo.</p>
                               </li>
-                              <li>
-                                <img src="/especiais/page-module/images/img-thumb.jpg" alt="">
+                              <li style="position: relative;">
+                                <img v-image-changeable src="/especiais/page-module/images/img-thumb.jpg" alt="">
                                 <h3 v-content-editable>Título sobre o tema</h3>
                                 <p v-content-editable>Muito importante citar na introdução que, atualmente, uma espécie de intercambio vem acontecendo entre os dois mundos, já que movimentos como o que aconteceu em Portugal, por exemplo, acabaram “aprendendo” a fazer vinhos com algumas técnicas e estilo do Novo Mundo. </p>
                               </li>
-                              <li>
-                                <img src="/especiais/page-module/images/img-thumb.jpg" alt="">
+                              <li style="position: relative;">
+                                <img v-image-changeable src="/especiais/page-module/images/img-thumb.jpg" alt="">
                                 <h3 v-content-editable>Título sobre o tema</h3>
                                 <p v-content-editable>Muito importante citar na introdução que, atualmente, uma espécie de intercambio vem acontecendo entre os dois mundos, já que movimentos como o que aconteceu em Portugal, por exemplo, acabaram “aprendendo” a fazer vinhos com algumas técnicas e estilo do Novo Mundo.
                                 </p>

@@ -7,8 +7,10 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.module.css') }}">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Oxygen:300" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo+27px">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:300">
+        <link rel="stylesheet" href="{{ asset('plugins/dropzone/dropzone.css') }}">
+        <link rel="stylesheet" href="{{ asset('plugins/sweetalert/sweetalert2.min.css') }}">
 
         <title>Page Builder</title>
 
@@ -20,7 +22,11 @@
         <navbar></navbar>
 
         <page-builder></page-builder>
-
+    
+        <image-change
+            list-url="{{ route('list') }}"
+            upload-url="{{ route('upload') }}"
+            delete-url="{{ route('delete') }}"></image-change>
     </div>
 
     <script>
@@ -29,5 +35,6 @@
         };
     </script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('plugins/dropzone/dropzone.js') }}"></script>
     </body>
 </html>

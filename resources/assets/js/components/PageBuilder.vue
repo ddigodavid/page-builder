@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-9">
 
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="height: 130px;">
                     <div class="panel-heading">Informações da página</div>
                     <div class="panel-body">
 
@@ -33,7 +33,7 @@
             </div>
 
             <div class="col-lg-3">
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="height: 130px;">
                     <div class="panel-heading">Publicação</div>
                     <div class="panel-body">
                         <div class="btn-group btn-group-sm">

@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('app');
 });
+
+Route::post('/upload', 'Photos\\PhotosController@save')->name('upload');
+Route::post('/delete', 'Photos\\PhotosController@delete')->name('delete');
+Route::post('/listPhotos', 'Photos\\PhotosController@listPhotos')->name('list');

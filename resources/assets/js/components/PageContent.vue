@@ -4,9 +4,14 @@
             <div class="panel-heading">Conteúdo</div>
             <div class="panel-body">
                 <div id="content" v-droppable="{accept: '#template-list > li', drop: onDrop}">
-                    <template v-for="tpl in templates">
-                        <template-row :template="tpl"></template-row>
-                    </template>
+                    <!--<template v-for="(tpl, index) in templates">-->
+                        <!--<button class="btn btn-danger"-->
+                                <!--style="position:relative;z-index:1000;top:36px;left:-15px;"-->
+                                <!--@click.prevent="removeTemplate(index)">-->
+                            <!--<i class="glyphicon glyphicon-trash"></i> Remover-->
+                        <!--</button>-->
+                        <!--<template-row :template="tpl"></template-row>-->
+                    <!--</template>-->
                 </div>
             </div>
         </div>
@@ -28,10 +33,30 @@
         methods: {
 
             onDrop(draggable) {
-
+                //
                 let template = draggable.data('template');
+                //
+                // this.addTemplate(template);
 
-                this.addTemplate(template);
+                let tpl = Vue.extend({
+                    template: template.html,
+                    methods: {
+                        removeTemplate() {
+                            alert('oi');
+                        }
+                    }
+                });
+
+                let wrapper = $(`<div class="row template-row">
+                                    <button class="btn btn-danger"
+                                            style="position:relative;z-index:1000;top:36px;left:-15px;"
+                                            @click.prevent="removeTemplate">
+                                        <i class="glyphicon glyphicon-trash"></i> Remover
+                                    </button>
+                                    <div id="template"></div>
+                                </div>`);
+                wrapper.appendTo('#content');
+                new tpl().$mount('#template');
 
             },
 
@@ -42,6 +67,10 @@
 
             getHtml() {
                 return this.container.html();
+            },
+
+            removeTemplate(index) {
+                alert('sqn');
             }
 
         }
