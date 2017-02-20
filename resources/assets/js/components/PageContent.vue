@@ -14,35 +14,61 @@
     const eventBus = new Vue({});
 
     export default {
+        props: ['saveButton', 'html'],
         data() {
             return {
-                container: {},
-                templates: []
+                container: {}
             }
         },
         mounted() {
             this.container = $(this.$el).find('#content');
 
-            eventBus.$on('deleted', function(instance) {
-
+            eventBus.$on('deleted', function (instance) {
                 $(instance.$el).parent().remove();
-
             });
 
+            $(this.saveButton).on('click', () => {
+                this.$emit('onSavePage', this.getHtml());
+            });
+
+            let html = this.html.replace(new RegExp('directive="(.*?)"', 'g'), '$1');
+
+            $(html).each((index, html) => {
+                html = $(html);
+                if (html.hasClass('template-row')) {
+                    this.buildTemplate(html.html());
+                }
+            });
         },
 
         methods: {
 
             onDrop(draggable) {
-                //
                 let template = draggable.data('template');
-                //
-                // this.addTemplate(template);
 
+                this.buildTemplate(`
+                    <div>
+                        ${template.html}
+                        <div class="btn-group" style="display:none;position:absolute;top:0px;left:0px;">
+                            <button class="btn btn-sm btn-danger" directive='@click.prevent="removeTemplate"' @click.prevent="removeTemplate">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                            <button class="btn btn-default btn-sm sort-handler">
+                                <i class="glyphicon glyphicon-move"></i>
+                            </button>
+                        </div>
+                    </div>
+                `);
+
+            },
+
+            getHtml() {
+                return this.container.html();
+            },
+
+            buildTemplate(html) {
                 let tpl = Vue.extend({
-                    template: `<div><button class="btn btn-danger" style="position:relative;z-index:1000;top:36px;left:-15px;"@click.prevent="removeTemplate">
-                                <i class="glyphicon glyphicon-trash"></i> Remover
-                            </button>${template.html}</div>`,
+                    template: html,
                     methods: {
                         removeTemplate() {
                             eventBus.$emit('deleted', this);
@@ -50,22 +76,17 @@
                     }
                 });
 
-                let wrapper = $(`<div class="row template-row">
-                                    <div id="template"></div>
-                                </div>`);
+                let wrapper = $(`<div class="row template-row"><div id="template"></div></div>`);
                 wrapper.appendTo('#content');
-
                 new tpl({parent: this}).$mount('#template');
 
-            },
+                $('div.template-row').on('mouseenter', function () {
+                    $(this).find('div.btn-group').show();
+                });
 
-            addTemplate(template)
-            {
-                this.templates.push(template);
-            },
-
-            getHtml() {
-                return this.container.html();
+                $('div.template-row').on('mouseleave', function () {
+                    $(this).find('div.btn-group').hide();
+                });
             }
 
         }

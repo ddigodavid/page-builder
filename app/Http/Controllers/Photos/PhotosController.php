@@ -26,7 +26,7 @@ class PhotosController extends Controller
             ->where('model_id', '=', $this->gallery->id)
             ->where('model_type', '=', get_class($this->gallery))
             ->where('collection_name', '=', $request->get('collection_name', 'main'))
-            ->orderBy('order_column')->paginate(10);
+            ->orderBy('id', 'DESC')->limit(30)->paginate(10);
 
         return response()->json([
             'results'    => $results->jsonSerialize(),

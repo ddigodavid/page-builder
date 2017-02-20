@@ -131,6 +131,18 @@
                 if (window.element.is('img')) {
                     window.element.attr('src', url);
                     return true;
+                } else if (window.element.is('iframe')) {
+                    let tpl = Vue.extend({
+                        template: `<img v-media-changeable src="${url}" alt="">`
+                    });
+
+                    let wrapper = $(`<div id="template"></div>`);
+                    let parent = window.element.parent();
+                    parent.html(wrapper);
+
+                    new tpl({parent: this}).$mount('#template');
+
+                    window.element = parent.find('img');
                 }
 
                 window.element.css('background-image', 'url(' + url + ')');

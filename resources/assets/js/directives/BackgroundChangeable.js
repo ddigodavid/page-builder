@@ -2,6 +2,7 @@
 export default {
     inserted: function (el) {
         let $el = $(el);
+        $el.attr('directive', 'v-background-changeable');
         let $button = $('<button id="btnChangeBackground" class="btn btn-default teste-button">' +
             '<i class="glyphicon glyphicon-cog"></i> Alterar background</button>');
 
