@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemplateColletionsTable extends Migration
+class CreateTemplateCollectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTemplateColletionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('template_colletions', function (Blueprint $table) {
+        Schema::create('template_collections', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
             $table->text('description')->nullable();
+            $table->text('cssUrl');
             $table->smallInteger('status');
 
             $table->timestamps();
@@ -30,6 +31,6 @@ class CreateTemplateColletionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('template_colletions');
+        Schema::dropIfExists('template_collections');
     }
 }

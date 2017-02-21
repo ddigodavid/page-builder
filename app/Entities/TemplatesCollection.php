@@ -2,10 +2,11 @@
 namespace App\Entities;
 
 class TemplatesCollection extends BaseModel {
-    protected $table = 'template_colletions';
+    protected $table = 'template_collections';
     protected $fillable = [
-        'title',
+        'name',
         'description',
+        'cssUrl',
         'status'
     ];
 }

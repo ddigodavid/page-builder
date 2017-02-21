@@ -18,6 +18,7 @@ class CreateTemplatesTable extends Migration
             $table->text('name');
             $table->text('thumb');
             $table->longText('html');
+            $table->smallInteger('status');
 
             $table->timestamps();
         });
