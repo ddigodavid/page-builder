@@ -29,14 +29,14 @@
                                     <td>
                                         <div class="btn-group btn-group-xs">
                                             <a href="{{ route(sprintf('%s.edit', $resourcePrefix), [$result->id]) }}" class="btn btn-primary"><span
-                                                        class="fa fa-edit"></span> Editar</a>
+                                                        class="glyphicon glyphicon-edit"></span> Editar</a>
                                             <button class="btn btn-danger"
                                                     data-form-link
                                                     data-action="{{ route(sprintf('%s.delete', $resourcePrefix), [$result->id]) }}"
                                                     data-method="delete"
                                                     data-confirm-title="Confirmação de exclusão"
                                                     data-confirm-text="Deseja realmente exluir esse registro?">
-                                                <span class="fa fa-trash"></span> Excluir
+                                                <span class="glyphicon glyphicon-trash"></span> Excluir
                                             </button>
                                         </div>
                                     </td>

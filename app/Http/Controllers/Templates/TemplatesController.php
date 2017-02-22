@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 
 class TemplatesController extends BaseController
 {
+    protected $resourcePrefix = 'templates';
 
     public function listTemplates(Request $request)
     {

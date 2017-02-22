@@ -1,15 +1,13 @@
-@extends('layouts.administration.master')
+@extends('app')
 
-@section('page-content')
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Editando Coleção de Templates - #{{ $model->id }}
-        </div>
-        <div class="panel-body">
-            {!! Form::model($model) !!}
-            {!! Form::hidden('id', $model->id) !!}
-            @include('template-collections.form')
-            {!! Form::close() !!}
-        </div>
-    </div>
+@section('content')
+    <page-builder
+        page="{{ base64_encode($model) }}"></page-builder>
+    
+    <image-change
+            list-url="{{ route('list') }}"
+            upload-url="{{ route('upload') }}"
+            delete-url="{{ route('delete') }}"></image-change>
+    <video-change></video-change>
+    <media-change></media-change>
 @endsection

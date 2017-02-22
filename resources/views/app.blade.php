@@ -28,6 +28,56 @@
         };
     </script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('plugins/dropzone/dropzone.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/dropzone/dropzone.js') }}"></script>
+    <script type="text/javascript">
+        $('body').delegate('[data-form-link]', 'click', function(e) {
+        
+            var $self = $(this);
+        
+            function submitForm()
+            {
+                var method = $self.data('method');
+                var action = $self.data('action');
+                var $form = $('<form method="POST" action="' + action + '"><input type="hidden" name="_method" value="' + method + '"></form>');
+                var params = $self.data('params');
+            
+                $form.append('<input type="hidden" name="_token" value="{{ csrf_token() }}">');
+            
+                if (typeof params !== 'undefined' && params != '') {
+                    $.each(params, function(key, p) {
+                        $form.append('<input type="hidden" name="' + key + '" value="' + p + '">');
+                    });
+                }
+            
+                $form.appendTo('body').submit();
+                return true;
+            }
+        
+            var confirmTitle = $self.data('confirm-title');
+            var confirmText = $self.data('confirm-text');
+        
+            if (typeof confirmTitle !== typeof undefined && confirmTitle !== false) {
+            
+                swal({
+                    title: confirmTitle,
+                    html: confirmText,
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Sim",
+                    cancelButtonText: "Não",
+                    showLoaderOnConfirm: true
+                }).then(function() {
+                
+                    submitForm();
+                
+                });
+            
+            } else {
+                submitForm();
+            }
+        
+            e.preventDefault();
+        });
+    </script>
     </body>
 </html>

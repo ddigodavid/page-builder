@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Redirect;
+use Response;
 
 abstract class BaseController extends Controller
 {
@@ -12,7 +13,7 @@ abstract class BaseController extends Controller
     public function index()
     {
         $results = $this->newModel()
-            ->published()
+            ->withDrafts()
             ->orderBy('id', 'DESC')
             ->paginate(10);
 
@@ -40,16 +41,19 @@ abstract class BaseController extends Controller
                 ->find(array_get($data, 'id'));
 
             $model->update($data);
-            return Redirect::route('template-collections.edit', [$model->id]);
+            return $request->wantsJson() ? Response::json(['model' => $model]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
         }
 
         $model = $this->newModel()->create($data);
-        return Redirect::route('template-collections.edit', [$model->id]);
+        return $request->wantsJson() ? Response::json(['model' => $model]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
     }
 
-    public function delete(Request $request)
+    public function destroy($modelId)
     {
-        $modelId = $request->get('id');
+        $model = $this->newModel()->find($modelId);
+        $model->update(['status' => 9]);
+
+        return Redirect::route(sprintf('%s.list', $this->resourcePrefix));
     }
 
     abstract protected function newModel();

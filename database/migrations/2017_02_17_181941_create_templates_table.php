@@ -15,6 +15,7 @@ class CreateTemplatesTable extends Migration
     {
         Schema::create('templates', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('collection');
             $table->text('name');
             $table->text('thumb');
             $table->longText('html');

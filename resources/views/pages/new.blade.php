@@ -9,5 +9,4 @@
             delete-url="{{ route('delete') }}"></image-change>
     <video-change></video-change>
     <media-change></media-change>
-    <text-change></text-change>
 @endsection

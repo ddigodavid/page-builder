@@ -4,8 +4,9 @@ namespace App\Entities;
 class Page extends BaseModel {
     protected $table = 'pages';
     protected $fillable = [
-        'title',
+        'name',
         'slug',
+        'html',
         'status'
     ];
 }

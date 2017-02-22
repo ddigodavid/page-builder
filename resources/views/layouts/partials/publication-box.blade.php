@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         @if(isset($model))
-            <b>Status:</b> {{ $model->present()->status_html }}<br>
+            <b>Status:</b> {!! $model->present()->status_html !!}<br>
             <b>Criado em:</b> {{ $model->present()->created_at }}<br>
             <b>Ultima atualização:</b> {{ $model->present()->updated_at }}<br>
         @endif

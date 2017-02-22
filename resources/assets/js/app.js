@@ -19,6 +19,7 @@ Vue.component('templateList', require('./components/TemplateList.vue'));
 Vue.component('imageChange', require('./components/ImageChange.vue'));
 Vue.component('mediaChange', require('./components/MediaChange.vue'));
 Vue.component('videoChange', require('./components/VideoChange.vue'));
+Vue.component('templateCollectionChooser', require('./components/TemplateCollectionChooser.vue'));
 
 import Draggable from './directives/Draggable';
 import Droppable from './directives/Droppable';
