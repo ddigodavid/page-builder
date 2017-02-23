@@ -20,7 +20,8 @@ Route::post('/photos/upload', 'Photos\\PhotosController@save')->name('upload');
 Route::post('/photos/delete', 'Photos\\PhotosController@delete')->name('delete');
 
 Route::get('/pages/list', 'Pages\\PagesController@index')->name('pages.list');
-Route::get('/pages/new', 'Pages\\PagesController@create')->name('pages.new');
+Route::get('/pages/new', 'Pages\\PagesController@beforeCreate')->name('pages.new');
+Route::post('/pages/new', 'Pages\\PagesController@newPage')->name('pages.new.post');
 Route::get('/pages/edit/{pageId}', 'Pages\\PagesController@edit')->name('pages.edit');
 Route::post('/pages/save', 'Pages\\PagesController@save')->name('pages.save');
 Route::delete('/pages/delete/{pageId}', 'Pages\\PagesController@destroy')->name('pages.delete');

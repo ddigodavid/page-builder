@@ -48,7 +48,7 @@
                 <page-content @onSavePage="savePage" :html="pageData.html" save-button="#save-page"></page-content>
             </div>
             <div class="col-lg-2">
-                <template-list></template-list>
+                <template-list :template-collection="templateCollectionT"></template-list>
             </div>
         </div>
 
@@ -68,6 +68,9 @@
                         status: 1
                     };
                 }
+            },
+            templateCollection: {
+                required: true
             }
         },
         data() {

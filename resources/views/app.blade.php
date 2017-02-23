@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/style.module.css') }}">
+        <link id="" rel="stylesheet" href="{{ asset('css/style.module.css') }}">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo+27px">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:300">
