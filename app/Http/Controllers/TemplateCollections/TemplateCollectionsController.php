@@ -12,7 +12,7 @@ class TemplateCollectionsController extends BaseController
 
     public function listTemplateCollections(Request $request)
     {
-        $templateCollections = TemplatesCollection::all();
+        $templateCollections = TemplatesCollection::withDrafts()->orderBy('id', 'DESC')->get();
 
         return response()->json(['templateCollections' => $templateCollections, 'templateCollectionsAggregated' => $templateCollections->chunk(4)]);
     }

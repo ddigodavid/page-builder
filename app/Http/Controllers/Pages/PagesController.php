@@ -8,21 +8,32 @@ use Illuminate\Http\Request;
 
 class PagesController extends BaseController
 {
+
     protected $resourcePrefix = 'pages';
 
-    public function newPage(Request $request)
+    public function newPage($templateCollectionId)
     {
-        return view('pages.build-page', ['templateCollectionId' => $request->get('id')]);
+        $templatesCollection = TemplatesCollection::find($templateCollectionId);
+
+        return view('pages.build-page', [
+                'templateCollectionId' => $templateCollectionId,
+                'templatesCollection'  => $templatesCollection
+            ]);
     }
 
     public function beforeCreate()
     {
-        $templateCollectionsAggregated = TemplatesCollection::withDrafts()->orderBy('id', 'DESC')->get()->chunk(4);
+        $templateCollectionsAggregated =
+            TemplatesCollection::withDrafts()
+                ->orderBy('id', 'DESC')
+                ->get()
+                ->chunk(4);
+
         return view('pages.new', compact('templateCollectionsAggregated'));
     }
 
     protected function newModel()
     {
-        return  new Page();
+        return new Page();
     }
 }

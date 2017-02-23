@@ -12,7 +12,7 @@ class TemplatesController extends BaseController
 
     public function listTemplates(Request $request)
     {
-        $templates = Template::all();
+        $templates = $request->has('templateCollection') ? Template::where('collection', '=', $request->get('templateCollection'))->get() : Template::all();
 
         return response()->json(['templates' => $templates]);
     }

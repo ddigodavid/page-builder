@@ -14,7 +14,7 @@
     const eventBus = new Vue({});
 
     export default {
-        props: ['saveButton', 'html'],
+        props: ['saveButton', 'draftButton', 'html'],
         data() {
             return {
                 container: {}
@@ -28,7 +28,11 @@
             });
 
             $(this.saveButton).on('click', () => {
-                this.$emit('onSavePage', this.getHtml());
+                this.$emit('onSavePage', this.getHtml(), 1);
+            });
+
+            $(this.draftButton).on('click', () => {
+                this.$emit('onDraftPage', this.getHtml(), 0);
             });
 
             let html = this.html.replace(new RegExp('directive="(.*?)"', 'g'), '$1');

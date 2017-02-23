@@ -41,7 +41,7 @@ abstract class BaseController extends Controller
                 ->find(array_get($data, 'id'));
 
             $model->update($data);
-            return $request->wantsJson() ? Response::json(['model' => $model]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
+            return $request->wantsJson() ? Response::json(['model' => $model, 'status_html' => $model->present()->status_html]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
         }
 
         $model = $this->newModel()->create($data);

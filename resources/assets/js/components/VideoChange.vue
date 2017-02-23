@@ -44,10 +44,16 @@
             },
 
             getIdentifier(url) {
-                var pattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
+                var vimeoPattern = /(?:http?s?:\/\/)?(?:www\.)?(?:vimeo\.com)\/?(.+)/g;
+                var youtubePattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
 
-                if (pattern.test(url)) {
-                    return url.replace(pattern,'$1');
+                if(vimeoPattern.test(html)){
+                    var html = html.replace(vimeoPattern, '$1');
+                }
+
+
+                if (youtubePattern.test(url)) {
+                    return url.replace(youtubePattern,'$1');
                 }
 
                 return null;

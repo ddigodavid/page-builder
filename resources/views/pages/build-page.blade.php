@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('page-css')
+    <link rel="stylesheet" href="{{ $templatesCollection->cssUrl }}">
+@endsection
+
 @section('content')
     <page-builder template-collection="{{ $templateCollectionId }}"></page-builder>
     

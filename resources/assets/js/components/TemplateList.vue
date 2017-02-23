@@ -31,7 +31,6 @@
             }
         },
         mounted() {
-            alert(this.templateCollection);
             this.$http.post('/templates/list', {templateCollection: this.templateCollection}).then((response) => {
                 this.templates = response.data.templates;
             });
