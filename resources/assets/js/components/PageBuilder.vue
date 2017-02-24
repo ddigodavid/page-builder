@@ -46,7 +46,12 @@
                             <button id="draft-button" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i>
                                 Rascunho
                             </button>
-                            <button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Excluir</button>
+                            <a href="javascript:void(0);" class="btn btn-danger"
+                               data-form-link
+                               data-confirm-title="Confirmação de exclusão"
+                               data-confirm-text="Deseja realmente excluir esse registro?"
+                               data-method="DELETE"
+                               :data-action="deleteUrl"><i class="glyphicon glyphicon-trash"></i> Excluir</a>
                         </div>
                         <div class="form-group">
                             <input type="hidden" v-model="pageData.collection">
@@ -93,6 +98,11 @@
                 pageData: {}
             }
         },
+        computed: {
+            deleteUrl() {
+                return '/pages/delete/' + this.pageData.id;
+            }
+        },
         created() {
             if (typeof this.page === 'object') {
                 this.pageData = this.page
@@ -116,7 +126,7 @@
                             window.location = '/pages/edit/' + response.data.model.id;
                         }
 
-                        $("#page_status_html").html(response.data.status_html);
+                        $("#page_status_html").html();
                     });
                 });
             },

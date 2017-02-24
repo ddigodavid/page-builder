@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Pages\\PagesController@beforeCreate');
+Route::get('/', 'Controller@index');
 
 Route::post('/photos/list', 'Photos\\PhotosController@listPhotos')->name('list');
 Route::post('/photos/upload', 'Photos\\PhotosController@save')->name('upload');

@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->integer('collection');
             $table->text('name');
-            $table->text('html');
+            $table->longText('html');
             $table->text('slug');
             $table->smallInteger('status');
 
