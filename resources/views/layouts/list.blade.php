@@ -28,7 +28,8 @@
                                     <td>{{ $result->present()->updated_at }}</td>
                                     <td>
                                         <div class="btn-group btn-group-xs">
-                                            <a href="{{ route(sprintf('%s.edit', $resourcePrefix), [$result->id]) }}" class="btn btn-primary"><span
+                                            <a href="{{ route(sprintf('%s.edit', $resourcePrefix), [$result->id]) }}"
+                                               class="btn btn-primary"><span
                                                         class="glyphicon glyphicon-edit"></span> Editar</a>
                                             <button class="btn btn-danger"
                                                     data-form-link
@@ -50,7 +51,9 @@
                         </tbody>
                     </table>
                 </div>
-                {!! $results->links() !!}
+                <div style="display: flex;justify-content: center;">
+                    {!! $results->links() !!}
+                </div>
             </div>
         </div>
     </div>
