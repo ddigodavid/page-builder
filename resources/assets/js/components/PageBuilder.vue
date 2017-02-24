@@ -81,7 +81,7 @@
                 required: false,
                 default: function () {
                     return {
-                        collection: this.templateCollection,
+                        collection: null,
                         html: '',
                         name: '',
                         slug: '',
@@ -93,6 +93,14 @@
                 required: true
             }
         },
+        created() {
+            if (typeof this.page === 'object') {
+                this.pageData = this.page;
+                this.pageData.collection = this.templateCollection;
+            } else {
+                this.pageData = JSON.parse(atob(this.page));
+            }
+        },
         data() {
             return {
                 pageData: {}
@@ -101,13 +109,6 @@
         computed: {
             deleteUrl() {
                 return '/pages/delete/' + this.pageData.id;
-            }
-        },
-        created() {
-            if (typeof this.page === 'object') {
-                this.pageData = this.page
-            } else {
-                this.pageData = JSON.parse(atob(this.page));
             }
         },
         methods: {
@@ -131,7 +132,7 @@
                 });
             },
             isNewPage() {
-                return !this.pageData.id;
+                return ! this.pageData.hasOwnProperty('id');
             }
         }
     }

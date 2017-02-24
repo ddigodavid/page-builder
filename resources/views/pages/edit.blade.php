@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    
     <page-builder
             page="{{ base64_encode($model) }}"
             template-collection="{{ $model->collection }}">
