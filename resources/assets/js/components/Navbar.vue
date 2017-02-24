@@ -2,11 +2,11 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Page Builder</a>
+                <a class="navbar-brand" href="/">Page Builder</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class=""><a href="#">Home</a></li>
+                    <li class=""><a href="/">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administração <span class="caret"></span></a>
                         <ul class="dropdown-menu">

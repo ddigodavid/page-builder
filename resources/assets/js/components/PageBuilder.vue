@@ -126,7 +126,7 @@
                             window.location = '/pages/edit/' + response.data.model.id;
                         }
 
-                        $("#page_status_html").html();
+                        $("#page_status_html").html(response.data.status_html);
                     });
                 });
             },
