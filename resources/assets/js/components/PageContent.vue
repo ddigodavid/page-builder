@@ -35,7 +35,7 @@
                 this.$emit('onDraftPage', this.getHtml(), 0);
             });
 
-            let html = this.html.replace(new RegExp('directive="(.*?)"', 'g'), '$1');
+            let html = this.html.replace(new RegExp(`directive=["|'](.*?)["|']`, 'g'), '$1 directive="$1"');
 
             $(html).each((index, html) => {
                 html = $(html);
@@ -54,7 +54,7 @@
                     <div>
                         ${template.html}
                         <div class="btn-group" style="display:none;position:absolute;top:0px;left:0px;">
-                            <button class="btn btn-sm btn-danger" directive='@click.prevent="removeTemplate"' @click.prevent="removeTemplate">
+                            <button class="btn btn-sm btn-danger" directive='@click.prevent=removeTemplate' @click.prevent="removeTemplate">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </button>
                             <button class="btn btn-default btn-sm sort-handler">

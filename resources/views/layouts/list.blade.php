@@ -50,6 +50,7 @@
                         </tbody>
                     </table>
                 </div>
+                {!! $results->links() !!}
             </div>
         </div>
     </div>
