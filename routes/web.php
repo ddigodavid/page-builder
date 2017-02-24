@@ -29,7 +29,7 @@ Route::get('/templates/list', 'Templates\\TemplatesController@index')->name('tem
 Route::get('/templates/new', 'Templates\\TemplatesController@create')->name('templates.new');
 Route::get('/templates/edit/{templateId}', 'Templates\\TemplatesController@edit')->name('templates.edit');
 Route::post('/templates/save', 'Templates\\TemplatesController@save')->name('templates.save');
-Route::post('/templates/delete/{templateId}', 'Templates\\TemplatesController@destroy')->name('templates.delete');
+Route::delete('/templates/delete/{templateId}', 'Templates\\TemplatesController@destroy')->name('templates.delete');
 
 Route::post('/collections/list', 'TemplateCollections\\TemplateCollectionsController@listTemplateCollections')->name('template-collections.list.post');
 Route::get('/collections/list', 'TemplateCollections\\TemplateCollectionsController@index')->name('template-collections.list');
