@@ -7,14 +7,28 @@
                 @yield('heading')
             </div>
             <div class="panel-body">
+                {!! Form::open(['route' => sprintf('%s.list', $resourcePrefix), 'method' => 'GET']) !!}
+                    @section('filters')
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                {!! Form::label('Palavras-Chave') !!}
+                                {!! Form::text('keyword', request('keyword'), ['class' => "form-control"]) !!}
+                            </div>
+                            <div class="col-sm-12 col-md-4 align-button-button">
+                                {!! Form::submit('Procurar', ['class' => 'btn btn-success']) !!}
+                            </div>
+                        </div>
+                    @show
+                {!! Form::close() !!}
+                <hr>
                 <div class="table-responsive">
                     <table class="table table-striped" id="listClippings">
                         <thead>
                         <tr>
                             <th class="th-id">#ID</th>
                             <th><span class="fa fa-pencil"></span> Nome</th>
-                            <th class="th-date"><span class="fa fa-calendar"></span> Criado em</th>
-                            <th class="th-date"><span class="fa fa-calendar"></span> Ultima atualização</th>
+                            <th class="th-date"><span class="glyphicon glyphicon-calendar"></span> Criado em</th>
+                            <th class="th-date"><span class="glyphicon glyphicon-calendar"></span> Ultima atualização</th>
                             <th class="th-action">Ações</th>
                         </tr>
                         </thead>

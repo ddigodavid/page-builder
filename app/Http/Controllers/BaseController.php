@@ -10,14 +10,19 @@ abstract class BaseController extends Controller
 {
     protected $resourcePrefix;
 
-    public function index()
+    public function index(Request $request)
     {
         $results = $this->newModel()
             ->withDrafts()
-            ->orderBy('id', 'DESC')
-            ->paginate(10);
+            ->orderBy('id', 'DESC');
 
-        return view(sprintf('%s.list', $this->resourcePrefix), ['results' => $results, 'resourcePrefix' => $this->resourcePrefix]);
+        if ($request->has('keyword')) {
+            $results
+                ->where('name', 'LIKE', '%' . $request->get('keyword') . '%')
+                ->orWhere('id', '=', $request->get('keyword'));
+        }
+
+        return view(sprintf('%s.list', $this->resourcePrefix), ['results' => $results->paginate(10), 'resourcePrefix' => $this->resourcePrefix]);
     }
 
     public function create()
