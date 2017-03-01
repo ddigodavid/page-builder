@@ -64,6 +64,7 @@
                     </div>
                 `);
 
+                this.initCKEditor();
             },
 
             getHtml() {
@@ -90,6 +91,13 @@
 
                 $('div.template-row').on('mouseleave', function () {
                     $(this).find('div.btn-group').hide();
+                });
+            },
+            initCKEditor() {
+                $("[contenteditable=true]:not('.cke_editable')").each(function () {
+                    $(this).attr('id', 'cke_editor');
+                    CKEDITOR.inline('cke_editor');
+                    $(this).attr('id', '');
                 });
             }
 

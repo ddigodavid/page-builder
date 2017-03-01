@@ -31,6 +31,7 @@
     </script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('plugins/dropzone/dropzone.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript">
         $('body').delegate('[data-form-link]', 'click', function(e) {
         
@@ -80,6 +81,8 @@
         
             e.preventDefault();
         });
+
+        CKEDITOR.inlineAll();
     </script>
     </body>
 </html>
