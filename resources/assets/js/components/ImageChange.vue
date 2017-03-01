@@ -12,7 +12,7 @@
                             <div class="dz-message" data-dz-message><span>Clique ou arraste imagens aqui<br><i class="glyphicon glyphicon-cloud"></i></span></div>
                         </div>
                     </div>
-                    <div class="photos-wrapper">
+                    <div class="photos-wrapper" style="min-height: 231px;">
                         <ul v-show="hasPhotos()" class="photos">
                             <li v-for="photo in photos" :data-id="photo.id" v-bind:style="'cursor: pointer;background-image: url(' + photo.url + ');'" v-on:click.prevent="usePhoto(photo.url)">
                                 <button class="btn btn-danger btn-xs pull-right" title="Remover" v-on:click.prevent="removePhoto(photo.id)"><i class="glyphicon glyphicon-trash"></i></button>

@@ -113,6 +113,14 @@
         },
         methods: {
             savePage(html, status) {
+
+                swal({
+                    type: 'info',
+                    title: 'Aguarde...',
+                    text: 'Salvando alterações',
+                    showConfirmButton: false
+                });
+
                 this.pageData.html = html;
                 this.pageData.status = status;
 
