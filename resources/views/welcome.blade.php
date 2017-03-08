@@ -78,14 +78,16 @@
 <body>
     <div class="full-height flex-center default-font position-ref">
         <div class="content">
-            <div class="title m-b-md">
-                Page Builder
+            <div class="flex-center">
+                <img src="/images/pagebuilder_logo.png" alt="Page Builder">
             </div>
         
-            <div class="links">
+            <div class="links flex-center">
                 <a href="{{ route('pages.list') }}">Páginas</a>
-                <a href="{{ route('templates.list') }}">Templates</a>
-                <a href="{{ route('template-collections.list') }}">Coleções de Temlates</a>
+                @can('manage', App\User::class)
+                    <a href="{{ route('templates.list') }}">Templates</a>
+                    <a href="{{ route('template-collections.list') }}">Coleções de Temlates</a>
+                @endcan
             </div>
         </div>
     </div>

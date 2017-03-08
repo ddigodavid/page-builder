@@ -1,0 +1,3 @@
+criar um endpoint para listar todas as paginas
+criar um endpoint para buscar a pagina por slug OK
+criar sistema de login e autorizações OK

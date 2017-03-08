@@ -5,6 +5,7 @@ use App\Entities\Page;
 use App\Entities\TemplatesCollection;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
+use Response;
 
 class PagesController extends BaseController
 {
@@ -35,5 +36,22 @@ class PagesController extends BaseController
     protected function newModel()
     {
         return new Page();
+    }
+
+    public function findPage($slug)
+    {
+        $page = Page::where('slug', '=', $slug)->first();
+
+        if (! $page || $page->isDraft()) {
+            return Response::json([
+                'data' => null,
+                'message' => 'Página não encontrada ou indiponível no momento'
+            ]);
+        }
+
+        return Response::json([
+            'data' => $page,
+            'message' => 'Página encontrada com sucesso'
+        ]);
     }
 }
