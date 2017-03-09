@@ -3,7 +3,6 @@
         <div class="panel panel-heading">Templates</div>
         <div class="panel-body">
             <ul id="template-list" class="ui-helper-reset ui-helper-clearfix">
-
                 <li v-for="tpl in templates" v-draggable :data-template="JSON.stringify(tpl)">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -14,7 +13,6 @@
                         </div>
                     </div>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -22,13 +20,18 @@
 
 <script type="text/javascript">
     export default {
+        props: {
+            templateCollection: {
+                required: true
+            }
+        },
         data() {
             return {
                 templates: []
             }
         },
         mounted() {
-            this.$http.post('/templates/list').then((response) => {
+            this.$http.post('/templates/list', {templateCollection: this.templateCollection}).then((response) => {
                 this.templates = response.data.templates;
             });
         }

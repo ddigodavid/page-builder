@@ -169,6 +169,7 @@ return [
 
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
         /*
          * Application Service Providers...

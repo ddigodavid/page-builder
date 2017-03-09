@@ -4,19 +4,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Redirect;
+use Response;
 
 abstract class BaseController extends Controller
 {
     protected $resourcePrefix;
 
-    public function index()
+    public function index(Request $request)
     {
         $results = $this->newModel()
-            ->published()
-            ->orderBy('id', 'DESC')
-            ->paginate(10);
+            ->withDrafts()
+            ->orderBy('id', 'DESC');
 
-        return view(sprintf('%s.list', $this->resourcePrefix), ['results' => $results, 'resourcePrefix' => $this->resourcePrefix]);
+        if ($request->has('keyword')) {
+            $results
+                ->where('name', 'LIKE', '%' . $request->get('keyword') . '%')
+                ->orWhere('id', '=', $request->get('keyword'));
+        }
+
+        return view(sprintf('%s.list', $this->resourcePrefix), ['results' => $results->paginate(10), 'resourcePrefix' => $this->resourcePrefix]);
     }
 
     public function create()
@@ -40,16 +46,19 @@ abstract class BaseController extends Controller
                 ->find(array_get($data, 'id'));
 
             $model->update($data);
-            return Redirect::route('template-collections.edit', [$model->id]);
+            return $request->wantsJson() ? Response::json(['model' => $model, 'status_html' => $model->present()->status_html]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
         }
 
         $model = $this->newModel()->create($data);
-        return Redirect::route('template-collections.edit', [$model->id]);
+        return $request->wantsJson() ? Response::json(['model' => $model]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
     }
 
-    public function delete(Request $request)
+    public function destroy($modelId)
     {
-        $modelId = $request->get('id');
+        $model = $this->newModel()->find($modelId);
+        $model->update(['status' => 9]);
+
+        return Redirect::route(sprintf('%s.list', $this->resourcePrefix));
     }
 
     abstract protected function newModel();

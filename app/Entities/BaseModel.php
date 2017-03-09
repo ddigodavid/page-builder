@@ -17,4 +17,14 @@ class BaseModel extends Model implements PresentableInterface
     {
         return $query->where('status', '=', 1);
     }
+
+    public function scopeWithDrafts($query)
+    {
+        return $query->whereIn('status', [0, 1]);
+    }
+
+    public function isDraft()
+    {
+        return $this->status == 0;
+    }
 }

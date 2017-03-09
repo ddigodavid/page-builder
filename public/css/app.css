@@ -7710,4 +7710,16 @@ body {
   right: 0;
 }
 
+@media (min-width: 992px) {
+  .align-button-button {
+    margin-top: 26px;
+  }
+}
+
+@media (max-width: 992px) {
+  .align-button-button {
+    margin-top: 10px;
+  }
+}
+
 /*# sourceMappingURL=app.css.map */

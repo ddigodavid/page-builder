@@ -14,7 +14,7 @@
     const eventBus = new Vue({});
 
     export default {
-        props: ['saveButton', 'html'],
+        props: ['saveButton', 'draftButton', 'html'],
         data() {
             return {
                 container: {}
@@ -28,10 +28,14 @@
             });
 
             $(this.saveButton).on('click', () => {
-                this.$emit('onSavePage', this.getHtml());
+                this.$emit('onSavePage', this.getHtml(), 1);
             });
 
-            let html = this.html.replace(new RegExp('directive="(.*?)"', 'g'), '$1');
+            $(this.draftButton).on('click', () => {
+                this.$emit('onDraftPage', this.getHtml(), 0);
+            });
+
+            let html = this.html.replace(new RegExp(`directive=["|'](.*?)["|']`, 'g'), '$1 directive="$1"');
 
             $(html).each((index, html) => {
                 html = $(html);
@@ -50,7 +54,7 @@
                     <div>
                         ${template.html}
                         <div class="btn-group" style="display:none;position:absolute;top:0px;left:0px;">
-                            <button class="btn btn-sm btn-danger" directive='@click.prevent="removeTemplate"' @click.prevent="removeTemplate">
+                            <button class="btn btn-sm btn-danger" directive='@click.prevent=removeTemplate' @click.prevent="removeTemplate">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </button>
                             <button class="btn btn-default btn-sm sort-handler">
@@ -60,6 +64,7 @@
                     </div>
                 `);
 
+                this.initCKEditor();
             },
 
             getHtml() {
@@ -86,6 +91,13 @@
 
                 $('div.template-row').on('mouseleave', function () {
                     $(this).find('div.btn-group').hide();
+                });
+            },
+            initCKEditor() {
+                $("[contenteditable=true]:not('.cke_editable')").each(function () {
+                    $(this).attr('id', 'cke_editor');
+                    CKEDITOR.inline('cke_editor');
+                    $(this).attr('id', '');
                 });
             }
 
