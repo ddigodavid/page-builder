@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 use App\Entities\Page;
 use App\Entities\TemplatesCollection;
 use App\Http\Controllers\BaseController;
+use App\Services\PageService;
 use Illuminate\Http\Request;
 use Response;
 
@@ -11,6 +12,13 @@ class PagesController extends BaseController
 {
 
     protected $resourcePrefix = 'pages';
+    private $pageService;
+
+    public function __construct(PageService $pageService)
+    {
+
+        $this->pageService = $pageService;
+    }
 
     public function newPage($templateCollectionId)
     {
@@ -48,6 +56,8 @@ class PagesController extends BaseController
                 'message' => 'Página não encontrada ou indiponível no momento'
             ]);
         }
+
+        $page->html = $this->pageService->removeDirectives($page->html);
 
         return Response::json([
             'data' => $page,
