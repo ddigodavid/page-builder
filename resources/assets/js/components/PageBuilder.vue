@@ -3,12 +3,12 @@
 
         <div class="row">
             <div class="col-lg-9">
-                <div class="panel panel-default" style="height: 130px;">
+                <div class="panel panel-default" style="min-height: 130px;">
                     <div class="panel-heading">Informações da página</div>
                     <div class="panel-body">
 
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-sm-6 col-lg-5">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></div>
@@ -17,14 +17,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-sm-6 col-lg-5">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="glyphicon glyphicon-link"></i></div>
                                         <input type="text" name="slug" class="form-control" placeholder="Slug"
                                                v-model="pageData.slug">
                                     </div>
+
                                 </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-2">
+                                <a :href='homologUrl' target='_blank' class='text-warning'><i class="glyphicon glyphicon-link"></i> Ver em Homologação</a><br>
+                                <a :href='url' target='_blank' class='text-info'><i class="glyphicon glyphicon-link"></i> Ver em Produção</a>
                             </div>
                         </div>
                     </div>
@@ -109,6 +114,12 @@
         computed: {
             deleteUrl() {
                 return '/pages/delete/' + this.pageData.id;
+            },
+            homologUrl(){
+                return 'http://hml.mistral.com.br/vinhos/' + this.pageData.slug;
+            },
+            url(){
+                return 'https://mistral.com.br/vinhos/' + this.pageData.slug;
             }
         },
         methods: {
