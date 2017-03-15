@@ -32,11 +32,11 @@ class PagesController extends BaseController
             $model->update($data);
             Cache::forget(sprintf("pgbuilder-%s", $model->slug));
 
-            return $request->wantsJson() ? Response::json(['model' => $model, 'status_html' => $model->present()->status_html]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
+            return Response::json(['model' => $model, 'status_html' => $model->present()->status_html]);
         }
 
         $model = $this->newModel()->create($data);
-        return $request->wantsJson() ? Response::json(['model' => $model]) : Redirect::route(sprintf('%s.edit', $this->resourcePrefix), [$model->id]);
+        return Response::json(['model' => $model]);
     }
 
     public function newPage($templateCollectionId)
