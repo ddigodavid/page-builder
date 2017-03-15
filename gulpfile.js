@@ -15,6 +15,17 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
 
+    // mix.webpackConfig({
+    //     module: {
+    //         rules: [
+    //             {
+    //                 test: /\.css$/,
+    //                 use: [ 'style-loader', 'css-loader' ]
+    //             }
+    //         ]
+    //     }
+    // });
+
     mix.sass('app.scss')
         .webpack('app.js')
         .browserSync({

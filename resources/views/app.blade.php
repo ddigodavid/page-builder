@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen:300">
     <link rel="stylesheet" href="{{ asset('plugins/dropzone/dropzone.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert/sweetalert2.min.css') }}">
-    
+
     <title>Page Builder</title>
 
 </head>

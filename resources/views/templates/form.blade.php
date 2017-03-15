@@ -8,5 +8,8 @@
 </div>
 <div class="form-group">
     <label for="html">HTML</label>
-    {!! Form::textarea('html', null, ['id' => 'html', 'class' => 'form-control']) !!}
+    <input type="hidden" name="html" :value="htmlText">
+    <input type="hidden" id="currentHtml" value="{{ isset($model) ? $model->html : '' }}">
+    {{--{!! Form::textarea('html', null, ['id' => 'html', 'class' => 'form-control']) !!}--}}
+    <codemirror v-model="htmlText" :options="editorOption"></codemirror>
 </div>
