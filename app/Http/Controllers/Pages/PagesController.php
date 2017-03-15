@@ -29,8 +29,8 @@ class PagesController extends BaseController
             $model = $this->newModel()
                 ->find(array_get($data, 'id'));
 
-            $model->update($data);
             Cache::forget(sprintf("pgbuilder-%s", $model->slug));
+            $model->update($data);
 
             return Response::json(['model' => $model, 'status_html' => $model->present()->status_html]);
         }
