@@ -59,6 +59,17 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="userType" class="col-md-4 control-label">Tipo de usuário</label>
+                            
+                            <div class="col-sm-12 col-md-6">
+                                <select id="userType" name="super_admin" class="form-control">
+                                    <option value="1">Admin</option>
+                                    <option value="0">Colaborador</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

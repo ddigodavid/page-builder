@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
-Route::get('/home', 'Controller@index');
+Route::get('/home', 'Controller@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/photos/list', 'Photos\\PhotosController@listPhotos')->name('list');
@@ -42,7 +42,19 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/collections/save', 'TemplateCollections\\TemplateCollectionsController@save')->name('template-collections.save');
         Route::delete('/collections/delete/{collectionId}', 'TemplateCollections\\TemplateCollectionsController@destroy')->name('template-collections.delete');
     });
+
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('user.new');
+    Route::post('/register', 'Auth\RegisterController@register');
 });
 
-Auth::routes();
+Route::post('/login', 'Auth\LoginController@login');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+
 Route::get('/logout', 'Auth\LoginController@logout');

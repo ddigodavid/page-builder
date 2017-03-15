@@ -87,6 +87,7 @@
                 @can('manage', App\User::class)
                     <a href="{{ route('templates.list') }}">Templates</a>
                     <a href="{{ route('template-collections.list') }}">Coleções de Templates</a>
+                    <a href="{{ route('user.new') }}">Novo Usuário</a>
                 @endcan
             </div>
         </div>
