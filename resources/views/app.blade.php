@@ -24,25 +24,28 @@
                 <div class="navbar-header">
                     <a href="/"><img src="/images/pagebuilder_logo_horizontal.png" alt="Page Builder" height="50"></a>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Administração <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/pages/list">Páginas</a></li>
-                            <li><a href="/pages/new">Nova Página</a></li>
-                            @can('manage', App\User::class)
-                                <li role="separator" class="divider"></li>
-                                <li><a href="/templates/list">Templates</a></li>
-                                <li><a href="/templates/new">Novo template</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="/collections/list">Coleção de templates</a></li>
-                                <li><a href="/collections/new">Nova coleçao de templates</a></li>
-                            @endcan
-                        </ul>
-                    </li>
-                </ul>
                 @if(Auth::user())
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">Administração <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/pages/list">Páginas</a></li>
+                                <li><a href="/pages/new">Nova Página</a></li>
+                                @can('manage', Auth::user())
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/templates/list">Templates</a></li>
+                                    <li><a href="/templates/new">Novo template</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/collections/list">Coleção de templates</a></li>
+                                    <li><a href="/collections/new">Nova coleçao de templates</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/collections/list">Usuários</a></li>
+                                    <li><a href="/collections/new">Novo usuário</a></li>
+                                @endcan
+                            </ul>
+                        </li>
+                    </ul>
                     <ul class="nav navbar-nav pull-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
