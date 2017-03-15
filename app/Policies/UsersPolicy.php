@@ -20,4 +20,16 @@ class UsersPolicy
     {
         return $user->isSuperAdmin();
     }
+
+    /**
+     * Determine whether the user can manage the module.
+     *
+     * @param  \App\User $user
+     * @param User $userToEdit
+     * @return mixed
+     */
+    public function manageUser(User $user, $userToEdit)
+    {
+        return $user->isSuperAdmin() || $user->id == $userToEdit;
+    }
 }

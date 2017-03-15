@@ -43,13 +43,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('/collections/delete/{collectionId}', 'TemplateCollections\\TemplateCollectionsController@destroy')->name('template-collections.delete');
 
         Route::get('/users/list', 'Users\UsersController@index')->name('user.list');
-        Route::get('/users/edit/{userId}', 'Users\UsersController@edit')->name('user.edit');
-        Route::delete('/users/delete/{userId}', 'Users\UsersController@destroy')->name('user.delete');
-        Route::post('/users/save', 'Users\UsersController@save')->name('user.save');
+        Route::delete('/users/delete/{userId}', 'Users\UsersController@destroy')->name('user.delete')->middleware('can:manageUser,App\User,userId');
 
         Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('user.new');
         Route::post('/register', 'Auth\RegisterController@register');
     });
+
+    Route::get('/users/edit/{userId}', 'Users\UsersController@edit')->name('user.edit')->middleware('can:manageUser,App\User,userId');
+    Route::post('/users/save', 'Users\UsersController@save')->name('user.save')->middleware('can:manageUser,App\User,userId');
 });
 
 Route::post('/login', 'Auth\LoginController@login');

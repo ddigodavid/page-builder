@@ -59,12 +59,14 @@
                                 </div>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="userType" class="col-md-4 control-label">Tipo de usuário</label>
-                                <div class="col-sm-12 col-md-6">
-                                    {!! Form::select('super_admin', [1 => 'Admin', 0 => 'Colaborador'], null, ['id' => 'userType', 'class' => 'form-control']) !!}
+                            @if(Auth::user()->isSuperAdmin())
+                                <div class="form-group">
+                                    <label for="userType" class="col-md-4 control-label">Tipo de usuário</label>
+                                    <div class="col-sm-12 col-md-6">
+                                        {!! Form::select('super_admin', [1 => 'Admin', 0 => 'Colaborador'], null, ['id' => 'userType', 'class' => 'form-control']) !!}
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
