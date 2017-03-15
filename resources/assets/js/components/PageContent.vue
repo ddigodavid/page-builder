@@ -81,7 +81,7 @@
                     }
                 });
 
-                let wrapper = $(`<div class="row template-row"><div id="template"></div></div>`);
+                let wrapper = $(`<div class="template-row"><div id="template"></div></div>`);
                 wrapper.appendTo('#content');
                 new tpl({parent: this}).$mount('#template');
 
