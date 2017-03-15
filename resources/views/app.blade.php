@@ -34,14 +34,14 @@
                                 <li><a href="/pages/new">Nova Página</a></li>
                                 @can('manage', Auth::user())
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="/templates/list">Templates</a></li>
-                                    <li><a href="/templates/new">Novo template</a></li>
+                                    <li><a href="{{ route('templates.list') }}">Templates</a></li>
+                                    <li><a href="{{ route('templates.new') }}">Novo template</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="/collections/list">Coleção de templates</a></li>
-                                    <li><a href="/collections/new">Nova coleçao de templates</a></li>
+                                    <li><a href="{{ route('template-collections.list') }}">Coleção de templates</a></li>
+                                    <li><a href="{{ route('template-collections.new') }}">Nova coleçao de templates</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="/collections/list">Usuários</a></li>
-                                    <li><a href="/collections/new">Novo usuário</a></li>
+                                    <li><a href="{{ route('user.list') }}">Usuários</a></li>
+                                    <li><a href="{{ route('user.new') }}">Novo usuário</a></li>
                                 @endcan
                             </ul>
                         </li>

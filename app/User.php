@@ -2,12 +2,18 @@
 
 namespace App;
 
+use App\Presenters\DefaultPresenter;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laracasts\Presenter\Contracts\PresentableInterface;
+use Laracasts\Presenter\PresentableTrait;
 
-class User extends Authenticatable
+class User extends Authenticatable implements PresentableInterface
 {
-    use Notifiable;
+
+    use PresentableTrait, Notifiable;
+
+    protected $presenter = DefaultPresenter::class;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'super_admin',
+        'name', 'email', 'password', 'super_admin', 'status'
     ];
 
     /**
@@ -30,5 +36,15 @@ class User extends Authenticatable
     public function isSuperAdmin()
     {
         return (bool) $this->super_admin;
+    }
+
+    public function scopeWithDrafts($query)
+    {
+        return $query->whereIn('status', [0, 1]);
+    }
+
+    public function isDraft()
+    {
+        return $this->status == 0;
     }
 }
