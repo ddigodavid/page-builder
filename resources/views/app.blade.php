@@ -53,7 +53,8 @@
                                aria-expanded="false">Logado como: <strong>{{ Auth::user()->name }}</strong> <span
                                         class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/logout"><i clas="fa fa-sign-out"></i> Logout</a></li>
+                                <li><a href="{{ route('user.edit', Auth::user()->id) }}"><i class="glyphicon glyphicon-cog"></i> Alterar Dados</a></li>
+                                <li><a href="/logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>

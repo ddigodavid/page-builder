@@ -147,6 +147,7 @@
                         }
 
                         $("#page_status_html").html(response.data.status_html);
+                        this.pageData.slug = response.data.model.slug;
                     });
                 });
             },
