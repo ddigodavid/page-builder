@@ -41,10 +41,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/collections/edit/{collectionId}', 'TemplateCollections\\TemplateCollectionsController@edit')->name('template-collections.edit');
         Route::post('/collections/save', 'TemplateCollections\\TemplateCollectionsController@save')->name('template-collections.save');
         Route::delete('/collections/delete/{collectionId}', 'TemplateCollections\\TemplateCollectionsController@destroy')->name('template-collections.delete');
-    });
 
-    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('user.new');
-    Route::post('/register', 'Auth\RegisterController@register');
+        Route::get('/users/list', 'Users\UsersController@index')->name('user.list');
+        Route::get('/users/edit/{userId}', 'Users\UsersController@edit')->name('user.edit');
+        Route::delete('/users/delete/{userId}', 'Users\UsersController@destroy')->name('user.delete');
+        Route::post('/users/save', 'Users\UsersController@save')->name('user.save');
+
+        Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('user.new');
+        Route::post('/register', 'Auth\RegisterController@register');
+    });
 });
 
 Route::post('/login', 'Auth\LoginController@login');

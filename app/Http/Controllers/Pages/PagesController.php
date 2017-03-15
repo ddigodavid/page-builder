@@ -7,6 +7,7 @@ use App\Http\Controllers\BaseController;
 use App\Services\PageService;
 use Cache;
 use Illuminate\Http\Request;
+use Redirect;
 use Response;
 
 class PagesController extends BaseController
