@@ -6,7 +6,7 @@
         props: ['template'],
 
         created() {
-            let template = "<div class='row template-row'>" + this.template.html+ "</div>";
+            let template = "<div class='template-row'>" + this.template.html+ "</div>";
             let res = Vue.compile(template);
             this.$options.render = res.render;
             this.$options.staticRenderFns = res.staticRenderFns;
