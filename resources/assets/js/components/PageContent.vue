@@ -36,8 +36,9 @@
             });
 
             let html = this.html.replace(new RegExp(`directive=["|'](.*?)["|']`, 'g'), '$1 directive="$1"');
-
+            console.log(html);
             $(html).each((index, html) => {
+                console.log(html);
                 html = $(html);
                 if (html.hasClass('template-row')) {
                     this.buildTemplate(html.html());
