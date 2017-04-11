@@ -11,6 +11,7 @@ class Page extends BaseModel
     protected $fillable = [
         'name',
         'collection',
+        'metaDescription',
         'slug',
         'html',
         'status'
