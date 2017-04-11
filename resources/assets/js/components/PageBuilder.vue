@@ -36,7 +36,7 @@
                             <div class="col-sm-12 col-lg-12">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></div>
+                                        <div class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i> Meta Description</div>
                                         <input type="text" name="metaDescription" class="form-control"
                                                placeholder="Meta Description" v-model="pageData.metaDescription">
                                     </div>
