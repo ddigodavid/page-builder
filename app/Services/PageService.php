@@ -17,4 +17,9 @@ class PageService
 
         return $pageHtml;
     }
+
+    public function leaveJustFirstTwoHeaderLevelOne($html)
+    {
+        return preg_replace('/h2/', 'h1', preg_replace('/h1/', 'h2', $html), 2);
+    }
 }
