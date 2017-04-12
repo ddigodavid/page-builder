@@ -78,6 +78,7 @@ class PagesController extends BaseController
             }
 
             $page->html = $this->pageService->removeDirectives($page->html);
+            $page->html = $this->pageService->leaveJustFirstTwoHeaderLevelOne($page->html);
 
             return Response::json([
                 'data' => $page,
