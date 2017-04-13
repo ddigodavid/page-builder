@@ -27,4 +27,9 @@ class BaseModel extends Model implements PresentableInterface
     {
         return $this->status == 0;
     }
+
+    public function mediaField()
+    {
+        return "";
+    }
 }

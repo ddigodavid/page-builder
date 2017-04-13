@@ -7,7 +7,6 @@ use App\Http\Controllers\BaseController;
 use App\Services\PageService;
 use Cache;
 use Illuminate\Http\Request;
-use Redirect;
 use Response;
 
 class PagesController extends BaseController
@@ -25,14 +24,17 @@ class PagesController extends BaseController
     {
         $data = $request->all();
 
-        if($request->has('id')) {
-            $model = $this->newModel()
-                ->find(array_get($data, 'id'));
+        if ($request->has('id'))
+        {
+            $model = $this->newModel()->find(array_get($data, 'id'));
 
             Cache::forget(sprintf("pgbuilder-%s", $model->slug));
             $model->update($data);
 
-            return Response::json(['model' => $model, 'status_html' => $model->present()->status_html]);
+            return Response::json([
+                'model'       => $model,
+                'status_html' => $model->present()->status_html
+            ]);
         }
 
         $model = $this->newModel()->create($data);
@@ -44,18 +46,14 @@ class PagesController extends BaseController
         $templatesCollection = TemplatesCollection::find($templateCollectionId);
 
         return view('pages.build-page', [
-                'templateCollectionId' => $templateCollectionId,
-                'templatesCollection'  => $templatesCollection
-            ]);
+            'templateCollectionId' => $templateCollectionId,
+            'templatesCollection'  => $templatesCollection
+        ]);
     }
 
     public function beforeCreate()
     {
-        $templateCollectionsAggregated =
-            TemplatesCollection::withDrafts()
-                ->orderBy('id', 'DESC')
-                ->get()
-                ->chunk(4);
+        $templateCollectionsAggregated = TemplatesCollection::withDrafts()->orderBy('id', 'DESC')->get()->chunk(4);
 
         return view('pages.new', compact('templateCollectionsAggregated'));
     }
@@ -67,12 +65,14 @@ class PagesController extends BaseController
 
     public function findPage($slug)
     {
-        return Cache::rememberForever('pgbuilder-'.$slug, function() use ($slug) {
+        return Cache::rememberForever('pgbuilder-' . $slug, function () use ($slug)
+        {
             $page = Page::where('slug', '=', $slug)->first();
 
-            if (! $page || $page->isDraft()) {
+            if (! $page || $page->isDraft())
+            {
                 return Response::json([
-                    'data' => null,
+                    'data'    => null,
                     'message' => 'Página não encontrada ou indiponível no momento'
                 ]);
             }
@@ -81,7 +81,7 @@ class PagesController extends BaseController
             $page->html = $this->pageService->leaveJustFirstTwoHeaderLevelOne($page->html);
 
             return Response::json([
-                'data' => $page,
+                'data'    => $page,
                 'message' => 'Página encontrada com sucesso'
             ]);
 
