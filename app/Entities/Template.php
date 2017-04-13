@@ -12,10 +12,11 @@ class Template extends BaseModel implements HasMedia
     protected $fillable = [
         'collection',
         'name',
-        'thumb',
         'html',
         'status'
     ];
+
+    protected $appends = ['thumb'];
 
     public function templatesCollection()
     {
@@ -25,5 +26,21 @@ class Template extends BaseModel implements HasMedia
     public function mediaField()
     {
         return "thumb";
+    }
+
+    public function thumb()
+    {
+        $mediaCollection = $this->getMedia($this->mediaField());
+
+        if ($mediaCollection->isNotEmpty()) {
+            return $mediaCollection->first()->url;
+        }
+
+        return "";
+    }
+
+    public function getThumbAttribute()
+    {
+        return $this->thumb();
     }
 }

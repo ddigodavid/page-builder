@@ -1,10 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Entities\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Redirect;
 use Response;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 abstract class BaseController extends Controller
 {

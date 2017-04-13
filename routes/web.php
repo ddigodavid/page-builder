@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/pages/delete/{pageId}', 'Pages\\PagesController@destroy')->name('pages.delete');
 
     Route::post('/templates/list', 'Templates\\TemplatesController@listTemplates')->name('templates.list');
+    Route::post('/templates/delete-thumb', 'Templates\\TemplatesController@deleteThumb')->name('delete-thumb');
     Route::post('/collections/list', 'TemplateCollections\\TemplateCollectionsController@listTemplateCollections')->name('template-collections.list.post');
 
     Route::group(['middleware' => 'can:manage,App\User'], function () {
