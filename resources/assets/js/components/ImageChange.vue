@@ -146,6 +146,7 @@
                 }
 
                 window.element.css('background-image', 'url(' + url + ')');
+                window.element.css('background-color', '');
             },
 
             removePhoto: function(id) {

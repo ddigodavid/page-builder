@@ -16,9 +16,11 @@ Vue.component('pageBuilder', require('./components/PageBuilder.vue'));
 Vue.component('pageContent', require('./components/PageContent.vue'));
 Vue.component('templateRow', require('./components/TemplateRow.vue'));
 Vue.component('imageChange', require('./components/ImageChange.vue'));
+Vue.component('colorChange', require('./components/ColorChange.vue'));
 Vue.component('mediaChange', require('./components/MediaChange.vue'));
 Vue.component('videoChange', require('./components/VideoChange.vue'));
 Vue.component('templateList', require('./components/TemplateList.vue'));
+Vue.component('backgroundChange', require('./components/BackgroundChange.vue'));
 Vue.component('templateCollectionChooser', require('./components/TemplateCollectionChooser.vue'));
 
 import Sortable from './directives/Sortable';
@@ -29,6 +31,7 @@ import ContentEditable from './directives/ContentEditable';
 import MediaChangeable from './directives/MediaChangeable';
 import BackgroundChangeable from './directives/BackgroundChangeable';
 import ImageSourceChangeable from './directives/ImageSourceChangeable';
+import BackgroundColoredChangeable from './directives/BackgroundColoredChangeable';
 
 Vue.directive('sortable', Sortable);
 Vue.directive('draggable', Draggable);
@@ -38,6 +41,7 @@ Vue.directive('content-editable', ContentEditable);
 Vue.directive('media-changeable', MediaChangeable);
 Vue.directive('image-changeable', ImageSourceChangeable);
 Vue.directive('background-changeable', BackgroundChangeable);
+Vue.directive('background-colored-changeable', BackgroundColoredChangeable);
 
 import { codemirror, CodeMirror } from 'vue-codemirror'
 
