@@ -75,6 +75,7 @@ abstract class BaseController extends Controller
     {
         if ($model instanceof HasMedia && $request->hasFile($model->mediaField()))
         {
+            $model->clearMediaCollection($model->mediaField());
             $model->addMedia($request->file($model->mediaField()))->toCollection($model->mediaField());
         }
     }
