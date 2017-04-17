@@ -19,7 +19,7 @@
 
 <div id="app">
     @section('navbar')
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a href="/"><img src="/images/pagebuilder_logo_horizontal.png" alt="Page Builder" height="50"></a>

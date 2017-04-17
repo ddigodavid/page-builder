@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
     <label for="thumb">Thumb</label>
-    {!! Form::text('thumb', null, ['id' => 'thumb', 'class' => 'form-control']) !!}
+    {!! Form::file('thumb', ['id' => 'thumb', 'class' => 'form-control']) !!}
 </div>
 <div class="form-group">
     <label for="html">HTML</label>
