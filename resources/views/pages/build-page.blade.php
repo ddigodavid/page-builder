@@ -15,5 +15,4 @@
     <video-change></video-change>
     <media-change></media-change>
     <color-change></color-change>
-    <text-change></text-change>
 @endsection
