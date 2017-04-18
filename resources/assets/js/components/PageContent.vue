@@ -63,8 +63,9 @@
                         </div>
                     </div>
                 `);
-
-                this.initCKEditor();
+                setTimeout(() => {
+                    this.initCKEditor();
+                }, 1000);
             },
 
             getHtml() {
@@ -96,7 +97,9 @@
             initCKEditor() {
                 $("[contenteditable=true]:not('.cke_editable')").each(function () {
                     $(this).attr('id', 'cke_editor');
-                    CKEDITOR.inline('cke_editor');
+                    CKEDITOR.inline('cke_editor', {
+                        removeButtons: 'templates'
+                    });
                     $(this).attr('id', '');
                 });
             }
