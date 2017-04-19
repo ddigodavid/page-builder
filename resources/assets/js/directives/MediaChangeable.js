@@ -6,6 +6,7 @@ export default {
             '<i class="glyphicon glyphicon-cog"></i> Alterar mídia</button>');
     
         $el.attr('directive', 'v-media-changeable');
+        $el.parent().addClass('min-height-vue-directive');
         
         $el.parent().on('mouseenter', function() {
             $button.appendTo($(this)).show();

@@ -7,6 +7,7 @@
                     <h4 class="modal-title" id="myModalLabel">Alteração de imagem</h4>
                 </div>
                 <div class="modal-body">
+                    <button type="button" class="btn btn-default pull-right" v-on:click.prevent="removePhoto()">Remover imagem</button>
                     <div class="upload-wrapper">
                         <div class="dropzone-upload upload-photos">
                             <div class="dz-message" data-dz-message><span>Clique ou arraste imagens aqui<br><i class="glyphicon glyphicon-cloud"></i></span></div>
@@ -15,7 +16,7 @@
                     <div class="photos-wrapper" style="min-height: 231px;">
                         <ul v-show="hasPhotos()" class="photos">
                             <li v-for="photo in photos" :data-id="photo.id" v-bind:style="'cursor: pointer;background-image: url(' + photo.url + ');'" v-on:click.prevent="usePhoto(photo.url)">
-                                <button class="btn btn-danger btn-xs pull-right" title="Remover" v-on:click.prevent="removePhoto(photo.id)"><i class="glyphicon glyphicon-trash"></i></button>
+                                <button class="btn btn-danger btn-xs pull-right" title="Remover" v-on:click.prevent="deletePhoto(photo.id)"><i class="glyphicon glyphicon-trash"></i></button>
                             </li>
                         </ul>
                         <div class="message" v-show="!hasPhotos()"><span>Não há fotos cadastradas.</span></div>
@@ -149,7 +150,7 @@
                 window.element.css('background-color', '');
             },
 
-            removePhoto: function(id) {
+            deletePhoto: function(id) {
 
                 var self = this;
 
@@ -193,6 +194,11 @@
 
             hasMoreThanOnePage: function () {
                 return this.pagination.total > this.pagination.per_page;
+            },
+
+            removePhoto: function () {
+                window.element.css('background-image', '');
+                window.element.attr('src', '');
             }
         },
         computed: {
