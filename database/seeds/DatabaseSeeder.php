@@ -1,5 +1,6 @@
 <?php
 
+use App\Entities\Company;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,5 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(GalleriesTableSeeder::class);
+
+        Company::create(['name' => 'Mistral']);
+        Company::create(['name' => 'Vinci']);
     }
 }

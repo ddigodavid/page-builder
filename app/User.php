@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Entities\Company;
 use App\Presenters\DefaultPresenter;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -32,6 +33,11 @@ class User extends Authenticatable implements PresentableInterface
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 
     public function isSuperAdmin()
     {

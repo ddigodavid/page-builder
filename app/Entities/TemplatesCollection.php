@@ -7,6 +7,12 @@ class TemplatesCollection extends BaseModel {
         'name',
         'description',
         'cssUrl',
-        'status'
+        'status',
+        'company_id'
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
 }
