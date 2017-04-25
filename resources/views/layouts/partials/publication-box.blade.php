@@ -8,7 +8,7 @@
             <b>Criado em:</b> {{ $model->present()->created_at }}<br>
             <b>Ultima atualização:</b> {{ $model->present()->updated_at }}<br>
         @endif
-        <div class="row">
+        <div class="row-with-margin">
             <div class="col-lg-12">
                 <button type="submit" class="btn btn-success btn-block" name="status" value="1"><i class="glyphicon glyphicon-ok"></i> Salvar</button>
                 <button type="submit" class="btn btn-primary btn-block" name="status" value="0"><i class="glyphicon glyphicon-edit"></i> Salvar como rascunho</button>

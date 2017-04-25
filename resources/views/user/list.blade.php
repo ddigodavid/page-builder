@@ -29,7 +29,8 @@
                         <thead>
                         <tr>
                             <th class="th-id">#ID</th>
-                            <th><span class="fa fa-pencil"></span> Nome</th>
+                            <th class="th-name">Nome</th>
+                            <th class="th-company">Empresa</th>
                             <th class="th-date"><span class="glyphicon glyphicon-calendar"></span> Criado em</th>
                             <th class="th-date"><span class="glyphicon glyphicon-calendar"></span> Ultima atualização</th>
                             <th class="th-action">Ações</th>
@@ -41,6 +42,7 @@
                                 <tr>
                                     <td>{{ $result->id }}</td>
                                     <td>{{ $result->name }}</td>
+                                    <td>{{ $result->company->name }}</td>
                                     <td>{{ $result->present()->created_at }}</td>
                                     <td>{{ $result->present()->updated_at }}</td>
                                     <td>

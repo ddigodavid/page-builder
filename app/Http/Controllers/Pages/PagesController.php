@@ -5,6 +5,8 @@ use App\Entities\Page;
 use App\Entities\TemplatesCollection;
 use App\Http\Controllers\BaseController;
 use App\Services\PageService;
+use App\Services\TemplatesCollectionService;
+use Auth;
 use Cache;
 use Illuminate\Http\Request;
 use Response;
@@ -14,10 +16,32 @@ class PagesController extends BaseController
 
     protected $resourcePrefix = 'pages';
     private $pageService;
+    private $collectionService;
 
-    public function __construct(PageService $pageService)
+    public function __construct(PageService $pageService, TemplatesCollectionService $collectionService)
     {
         $this->pageService = $pageService;
+        $this->collectionService = $collectionService;
+    }
+
+    public function index(Request $request)
+    {
+        $results = $this->newModel()->withDrafts()->orderBy('id', 'DESC');
+
+        if ($request->has('keyword')) {
+            $results->where('name', 'LIKE', '%' . $request->get('keyword') . '%')->orWhere('id', '=', $request->get('keyword'));
+        }
+
+        if (! Auth::user()->hasMultiplePagesAccessPermissions()) {
+            $results->whereHas('templateCollection', function ($query) {
+                $query->where('company_id', '=', Auth::user()->company->id);
+            });
+        }
+
+        return view(sprintf('%s.list', $this->resourcePrefix), [
+            'results'        => $results->paginate(10),
+            'resourcePrefix' => $this->resourcePrefix
+        ]);
     }
 
     public function save(Request $request)
@@ -53,9 +77,11 @@ class PagesController extends BaseController
 
     public function beforeCreate()
     {
-        $templateCollectionsAggregated = TemplatesCollection::withDrafts()->orderBy('id', 'DESC')->get()->chunk(4);
+        $templateCollectionsAggregated = $this->collectionService->listTemplatesCollection();
 
-        return view('pages.new', compact('templateCollectionsAggregated'));
+        return view('pages.new', [
+            'templateCollectionsAggregated' => $templateCollectionsAggregated->get()->chunk(4)
+        ]);
     }
 
     protected function newModel()

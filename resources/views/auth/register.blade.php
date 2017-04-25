@@ -70,6 +70,19 @@
                                 </select>
                             </div>
                         </div>
+                        
+                        <div class="form-group">
+                            <label for="userType" class="col-md-4 control-label">Empresa</label>
+                            
+                            <div class="col-sm-12 col-md-6">
+                                <select id="userCompany" name="company_id" class="form-control">
+                                    <option value="1">Mistral</option>
+                                    <option value="2">Vinci</option>
+                                    <option value="3">Webeleven</option>
+                                    <option value="4">Holos Media</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
