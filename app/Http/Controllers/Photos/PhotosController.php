@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Photos;
 
 use App\Entities\Gallery;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -17,14 +18,16 @@ class PhotosController extends Controller
 
     public function save(Request $request)
     {
-        $this->gallery->addMedia($request->file('file'))->toCollection('main');
+        $this->getGallery($request->get('company_id'))->addMedia($request->file('file'))->toCollection('main');
     }
 
     public function listPhotos(Request $request)
     {
-        $results = $this->gallery->media()
-            ->where('model_id', '=', $this->gallery->id)
-            ->where('model_type', '=', get_class($this->gallery))
+        $gallery = $this->getGallery($request->get('company_id', 1));
+
+        $results = $gallery->media()
+            ->where('model_id', '=', $gallery->id)
+            ->where('model_type', '=', get_class($gallery))
             ->where('collection_name', '=', $request->get('collection_name', 'main'))
             ->orderBy('id', 'DESC')->limit(30)->paginate(10);
 
@@ -44,6 +47,15 @@ class PhotosController extends Controller
 
     public function delete(Request $request)
     {
-        $this->gallery->deleteMedia($request->get('photo_id'));
+        $this->getGallery($request->get('company_id'))->deleteMedia($request->get('photo_id'));
+    }
+
+    public function getGallery($companyId)
+    {
+        if (Auth::user()->hasMultiplePagesAccessPermissions()) {
+            return Gallery::where('company_id', '=', $companyId)->first();
+        }
+
+        return Gallery::where('company_id', '=', Auth::user()->company->id)->first();
     }
 }

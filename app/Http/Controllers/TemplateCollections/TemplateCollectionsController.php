@@ -22,7 +22,7 @@ class TemplateCollectionsController extends BaseController
     {
         $templateCollections = $this->collectionService->listTemplatesCollection($request);
 
-        return response()->json(['templateCollections' => $templateCollections, 'templateCollectionsAggregated' => $templateCollections->get()->chunk(4)]);
+        return response()->json(['templateCollections' => $templateCollections->get(), 'templateCollectionsAggregated' => $templateCollections->get()->chunk(4)]);
     }
 
     protected function newModel()
