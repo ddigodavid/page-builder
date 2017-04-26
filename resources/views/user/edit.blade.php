@@ -71,7 +71,7 @@
                                     <label for="userCompany" class="col-md-4 control-label">Empresa</label>
                 
                                     <div class="col-sm-12 col-md-6">
-                                        {!! Form::select('company_id', [1 => 'Mistral', 2 => 'Vinci', 3 => 'Webeleven', 4 => 'Holos Media'], null, ['id' => 'userCompany', 'class' => 'form-control']) !!}
+                                        {!! Form::select('company_id', $companies, null, ['id' => 'userCompany', 'class' => 'form-control']) !!}
                                     </div>
                                 </div>
                             @endif

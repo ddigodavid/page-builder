@@ -12,6 +12,6 @@ class GalleriesTableSeeder extends Seeder
      */
     public function run()
     {
-        Gallery::create(['title' => 'default']);
+        Gallery::create(['title' => 'vinci_default', 'company_id' => 2]);
     }
 }

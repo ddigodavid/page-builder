@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
 
         Company::create(['name' => 'Mistral']);
         Company::create(['name' => 'Vinci']);
+        Company::create(['name' => 'Webeleven']);
+        Company::create(['name' => 'Holos']);
     }
 }

@@ -75,12 +75,7 @@
                             <label for="userType" class="col-md-4 control-label">Empresa</label>
                             
                             <div class="col-sm-12 col-md-6">
-                                <select id="userCompany" name="company_id" class="form-control">
-                                    <option value="1">Mistral</option>
-                                    <option value="2">Vinci</option>
-                                    <option value="3">Webeleven</option>
-                                    <option value="4">Holos Media</option>
-                                </select>
+                                {!! Form::select('company_id', $companies, null, ['id' => 'userCompany', 'class' => 'form-control']) !!}
                             </div>
                         </div>
 
@@ -89,6 +84,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Cadastrar
                                 </button>
+                                <a href="{{ route('user.list') }}" class="btn btn-default">
+                                    <i class="glyphicon glyphicon-arrow-left"></i> Voltar
+                                </a>
                             </div>
                         </div>
                     </form>
