@@ -18,7 +18,7 @@ class PhotosController extends Controller
 
     public function save(Request $request)
     {
-        $this->getGallery($request->get('company_id'))->addMedia($request->file('file'))->toCollection('main');
+        $this->getGallery($request->get('company_id', 1))->addMedia($request->file('file'))->toCollection('main');
     }
 
     public function listPhotos(Request $request)
@@ -47,7 +47,7 @@ class PhotosController extends Controller
 
     public function delete(Request $request)
     {
-        $this->getGallery($request->get('company_id'))->deleteMedia($request->get('photo_id'));
+        $this->getGallery($request->get('company_id', 1))->deleteMedia($request->get('photo_id'));
     }
 
     public function getGallery($companyId)
