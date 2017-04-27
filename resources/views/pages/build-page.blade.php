@@ -8,6 +8,7 @@
     <page-builder template-collection="{{ $templateCollectionId }}"></page-builder>
     
     <image-change
+            is-super-admin="1"
             list-url="{{ route('list') }}"
             upload-url="{{ route('upload') }}"
             delete-url="{{ route('delete') }}"></image-change>

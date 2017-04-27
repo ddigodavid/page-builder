@@ -8,6 +8,10 @@
                 </div>
                 <div class="modal-body">
                     <button type="button" class="btn btn-default pull-right" v-on:click.prevent="removePhoto()">Remover imagem</button>
+                    <select type="button" class="btn btn-default pull-right" v-if="isSuperAdmin">
+                        <option value="">Mistral</option>
+                        <option value="">Vinci</option>
+                    </select>
                     <div class="upload-wrapper">
                         <div class="dropzone-upload upload-photos">
                             <div class="dz-message" data-dz-message><span>Clique ou arraste imagens aqui<br><i class="glyphicon glyphicon-cloud"></i></span></div>
@@ -59,7 +63,7 @@
     import dropzone from '../../../../public/plugins/dropzone/dropzone';
     import swal from '../../../../public/plugins/sweetalert/sweetalert2.min';
     export default {
-        props: ['uploadUrl', 'listUrl', 'deleteUrl', 'csrfToken'],
+        props: ['uploadUrl', 'listUrl', 'deleteUrl', 'csrfToken', 'isSuperAdmin'],
         data() {
             return {
                 photos: [],

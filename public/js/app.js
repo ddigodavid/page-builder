@@ -32436,11 +32436,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
-    props: ['uploadUrl', 'listUrl', 'deleteUrl', 'csrfToken'],
+    props: ['uploadUrl', 'listUrl', 'deleteUrl', 'csrfToken', 'isSuperAdmin'],
     data: function data() {
         return {
             photos: [],
@@ -106918,7 +106922,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.removePhoto()
       }
     }
-  }, [_vm._v("Remover imagem")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+  }, [_vm._v("Remover imagem")]), _vm._v(" "), (_vm.isSuperAdmin) ? _c('select', {
+    staticClass: "btn btn-default pull-right",
+    attrs: {
+      "type": "button"
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": ""
+    }
+  }, [_vm._v("Mistral")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": ""
+    }
+  }, [_vm._v("Vinci")])]) : _vm._e(), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "photos-wrapper",
     staticStyle: {
       "min-height": "231px"
